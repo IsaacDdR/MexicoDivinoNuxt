@@ -29,7 +29,7 @@
         <nav
           class="md:ml-auto flex flex-wrap items-center text-base justify-center"
         >
-          <a class="mr-5 hover:text-gray-900">First Link</a>
+          <NuxtLink to="/blog" class="mr-5 hover:text-gray-900">Blog</NuxtLink>
           <a class="mr-5 hover:text-gray-900">Second Link</a>
           <a class="mr-5 hover:text-gray-900">Third Link</a>
           <a class="mr-5 hover:text-gray-900">Fourth Link</a>
@@ -157,3 +157,11 @@
     </footer>
   </div>
 </template>
+<script>
+export default {
+  async asyncData({ $content, params }) {
+    const articles = await $content('articles', params.slug).fetch()
+    return { articles }
+  },
+}
+</script>
